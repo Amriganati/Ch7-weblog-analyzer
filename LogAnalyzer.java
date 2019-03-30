@@ -57,6 +57,25 @@ public class LogAnalyzer
         return maxHour;
     }
     /**
+     * finds the quietest hour
+     * @return int - quietest hour
+     */
+    public int quietestHour()
+    {
+        int quietestHour = 0;
+        
+        for(int i = 0; i < hourCounts.length; i++)
+        {
+            if(hourCounts[i] > 0 && hourCounts[i] > quietestHour)
+            {
+                quietestHour = hourCounts[i];
+            }
+        }
+        
+        return quietestHour;
+    }
+    
+    /**
      * Analyze the hourly access data from the log file.
      */
     public void analyzeHourlyData()
