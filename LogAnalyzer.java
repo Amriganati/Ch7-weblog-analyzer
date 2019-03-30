@@ -14,7 +14,7 @@ public class LogAnalyzer
     /**
      * Create an object to analyze hourly web accesses.
      */
-    public LogAnalyzer()
+    public LogAnalyzer(String filename)
     { 
         // Create the array object to hold the hourly
         // access counts.
@@ -22,7 +22,40 @@ public class LogAnalyzer
         // Create the reader to obtain the data.
         reader = new LogfileReader();
     }
-
+    
+    /**
+     *  Return the bumber of accesses recorded in the log file
+     *  @return int - number of accesses
+     */
+    public int numberOfAccesses()
+    {
+        int total = 0;
+        // add the value in each element of hourcounts to
+        //total.
+        for(int hour = 0; hour < hourCounts.length; hour++) 
+        {
+            total += hourCounts[hour];
+        }
+        return total;
+    }
+    
+    /**
+     * finds busiest hour of the year
+     * @return int - busiest hour of the year
+     */
+    public int busiestHour()
+    {
+        int maxHour = 0;
+        
+        for(int hour = 1; hour < hourCounts.length; hour++)
+        {
+            if(hourCounts[hour] > hourCounts[maxHour])
+            {
+                maxHour = hour;
+            }
+        }
+        return maxHour;
+    }
     /**
      * Analyze the hourly access data from the log file.
      */
