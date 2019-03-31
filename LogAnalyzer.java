@@ -25,7 +25,7 @@ public class LogAnalyzer
     
     /**
      *  Return the bumber of accesses recorded in the log file
-     *  @return int - number of accesses
+     *  @return  number of accesses
      */
     public int numberOfAccesses()
     {
@@ -41,7 +41,7 @@ public class LogAnalyzer
     
     /**
      * finds busiest hour of the year
-     * @return int - busiest hour of the year
+     * @return  busiest hour of the year
      */
     public int busiestHour()
     {
@@ -56,9 +56,10 @@ public class LogAnalyzer
         }
         return maxHour;
     }
+    
     /**
      * finds the quietest hour
-     * @return int - quietest hour
+     * @return the quietest hour
      */
     public int quietestHour()
     {
@@ -73,6 +74,22 @@ public class LogAnalyzer
         }
         
         return quietestHour;
+    }
+    
+    public int busiestTwoHours()
+    {
+        int greater = hourCounts[0];
+        int fHour = 0;
+        analyzeHourlyData();
+        for(int i = 0; i < hourCounts.length - 1; i++)
+        {
+            if((hourCounts[i] + hourCounts[i+1]) > greater)
+            {
+                greater =  hourCounts[i] + hourCounts[i+1];
+                fHour = i;
+            }
+        }
+        return fHour;
     }
     
     /**
